@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+    }
+    table{
+      text-align: left;
+      padding: 8px;
+    }
+    td, th{
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h2>HTML Table</h2>
+
+  <table border="1">
+    <tr>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Parentezco</th>
+    </tr>
+    <tr>
+      <td>Lady</td>
+      <td>45</td>
+      <td>Madre</td>
+    </tr>
+    <tr>
+      <td>Karen</td>
+      <td>16</td>
+      <td>Hermana</td>
+    </tr>
+    <tr>
+      <td>Yilian</td>
+      <td>17</td>
+      <td>Hermano</td>
+    </tr>
+  </table>
+
+  <table border="1">
+    <tbody>
+      <tr>
+        <th colspan="2">Tabla de empleados</th>
+      </tr>
+      <tr>
+        <th>Empleado</th>
+        <th>Sueldo</th>
+      </tr>
+      <tr>
+        <td>Juan</td>
+        <td>$ 1,300.000</td>
+      </tr>
+      <tr>
+        <td>Maria</td>
+        <td  rowspan="2">$ 1,300.000</td>
+      </tr>
+      <tr>
+        <td>Sharik</td>
+        <!-- <td>$ 1,300.000</td> -->
+      </tr>
+      <tr>
+        <td>Sebastian</td>
+        <td>$ 1,300.000</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Promedio</td>
+        <td>$ 1,300.000</td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+</html>

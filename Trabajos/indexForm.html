@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form trabajo</title>
+</head>
+<body>
+  <h2>Rellena tu CV</h2>
+  <form>
+    <!-- Input text -->
+    <label>Nombre</label><br>
+    <input type="text" autocomplete="given-name" maxlength="30"><br>
+    
+    <label>Apellido</label><br>
+    <input type="text" autocomplete="family-name" maxlength="80"><br>
+    
+    <!-- Input password -->
+    <label>Contraseña</label><br>
+    <input type="password" maxlength="10"><br>
+    
+    <!-- Input text -->
+    <label>DNI</label><br>
+    <input type="text"><br>
+    
+    <!-- Radio -->
+    <label>Sexo</label><br>
+    <input type="radio" name="sexo"/>Hombre <br>
+    <input type="radio" name="sexo"/>Mujer <br/>
+    
+    <br>
+    
+    <label for="">Incluir mi foto</label>
+    <input type="file" ><br>
+    <br>
+    <input type="checkbox" name="" id="" checked>
+    <label for="">Suscribirme al boletin de novedades</label><br>
+
+    <br>
+
+    <!-- Button sumit -->
+    <button type="submit">Guardar cambios</button>
+  </form>
+</body>
+</html>
