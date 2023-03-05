@@ -1,95 +1,134 @@
 <!-- Realizar una pagina web con todas las etiquetas vistas hasta el momento, para realizar nuestra hoja de vida, en el caso del uso los link el cual tiene que tener navegavilidad entre los dos archivos -->
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../image/favicon.png" type="image/x-icon">
-  <title>CV Sebastian Leal</title>
-
-  <style>
-    .arreglo{
-      display: flex;
-      gap: 1em;
-    }
-  </style>
-
-</head>
-<body>
-  <header>
-    <div class="arreglo">
-      <a href="#">
-        <img src="../image/invader-back.png" alt="IMG" style="padding: 10;">
-      </a>
-
-      <ul>
-        <li>
-          <a href="#" target="_blank">Inicio</a>
-        </li>
-        <li>
-          <a href="./proyectos.html" target="_blank">Proyectos</a>
-        </li>
-      </ul>
-
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../image/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../CSS/normalize.css" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>CV Sebastian Leal</title>
+  </head>
 
   <body>
-    <h1>Sebastian Leal S</h1>
-    <p>
-      <strong>Gmail</strong>: youremail@example.com
-    </p>
-    <p>
-      <strong>Direccion</strong>: XXX XXX XXX XXXX
-    </p>
-    <p>
-      <strong>Telefono</strong>: XXX XXX XXXX
-    </p>
-    <p>
-      Licencia de moto: XX
-    </p>
-    
-    <h2>Acerca de mi</h2>
-    <blockquote>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores illum ullam vel eius veniam, ut quidem quas sunt sapiente nulla nostrum repellendus laudantium quae soluta officiis quod nisi laborum asperiores.
-    </blockquote>
 
-    <h2>Experiencia</h2>
-    <blockquote>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam vero dicta expedita asperiores, nisi tenetur explicabo unde ullam assumenda tempore tempora laborum ad. Commodi illum, ipsam cupiditate ea sit maiores.
-    </blockquote>
+    <header class="hero">
+      <nav class="nav container">
+        <div class="nav__logo">
+          <a href="#">
+            <img src="../image/invader-solid-60.png" alt="logo CV" />
+          </a>
+        </div>
 
-    <h2>Conocimientos</h2>
-    <ul>
-      <li>
-        <img src="../image/html.png" alt="HTML" style="vertical-align:middle">
-        HTML
-      </li>
-      <li>
-        <img src="../image/css.png" alt="CSS" style="vertical-align:middle">
-        CSS
-      </li>
-      <li>
-        <img src="../image/js.png" alt="JavaScrpit" style="vertical-align:middle">
-        JS
-      </li>
-    </ul>
+        <ul class="nav__link nav__link--menu">
+          <li class="nav__items">
+            <a href="#" class="nav__links" target="_blank"> Inicio </a>
+          </li>
 
-    <h2>Contactame</h2>
-    <div class="arreglo">
-      <ol>
+          <li class="nav__items">
+            <a href="./proyectos.html" class="nav__links" target="_blank">
+              Proyectos
+            </a>
+          </li>
+
+          <img src="../image/close.svg" class="nav__close">
+        </ul>
+
+        <div class="nav__menu">
+          <img src="../image/menu.svg" class="nav__img">
+        </div>
+      </nav>
+
+      <section class="hero__container container">
+        <h1 class="hero__title">Sebastian Leal S</h1>
+        <p class="hero_paragraph">
+          Estudiante de Tecnología en Sistematización de datos con formación
+          técnica en mantenimiento de equipos de computo, certificado en
+          desarrollo de software con énfasis en aplicativos web por la
+          universidad de caldas y en soporte de tecnologías de la información
+          por Google; con interés en desarrollo de software, soporte IT y mesa
+          de ayuda; con capacidad de aprendizaje, de análisis, liderazgo,
+          planificación.
+        </p>
+      </section>
+    </header>
+
+    <main>
+      <section class="container about">
+        <h2 class="subtitle">Acerca de mi</h2>
+        <p class="about__paragraph">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores illum
+          ullam vel eius veniam, ut quidem quas sunt sapiente nulla nostrum
+          repellendus laudantium quae soluta officiis quod nisi laborum asperiores.
+        </p>
+      </section>
+
+      <h2 class="subtitle">Proyectos</h2>
+      <p>
+
+      </p>
+
+      <h2 class="subtitle">Datos de contacto</h2>
+      <p><strong>Gmail</strong>: youremail@example.com</p>
+      <p><strong>Direccion</strong>: XXX XXX XXX XXXX</p>
+      <p><strong>Telefono</strong>: XXX XXX XXXX</p>
+      
+  
+      <h2 class="subtitle">Experiencia</h2>
+      <blockquote>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam vero
+        dicta expedita asperiores, nisi tenetur explicabo unde ullam assumenda
+        tempore tempora laborum ad. Commodi illum, ipsam cupiditate ea sit
+        maiores.
+      </blockquote>
+  
+      <h2 class="subtitle">Conocimientos</h2>
+      <ul>
         <li>
-          <a href="mailto:youremail@example.com">Gmail</a>
+          <img
+            src="../image/html.png"
+            alt="HTML"
+            style="vertical-align: middle"
+          />
+          HTML
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/sebastian-leal-s/">Linkedin</a>
+          <img src="../image/css.png" alt="CSS" style="vertical-align: middle" />
+          CSS
         </li>
         <li>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUJcmljayByb2xs">YouTube</a>
+          <img
+            src="../image/js.png"
+            alt="JavaScrpit"
+            style="vertical-align: middle"
+          />
+          JS
         </li>
-      </ol>
-    </div>
+      </ul>
+    </main>
+
+    <footer>
+      <h2 class="subtitle">Mis redes</h2>
+      <div class="arreglo">
+        <ol>
+          <li>
+            <a href="mailto:youremail@example.com">
+              Gmail
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/sebastian-leal-s/">
+              Linkedin
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUJcmljayByb2xs">
+              YouTube
+            </a>
+          </li>
+        </ol>
+      </div>
+    </footer>
   </body>
-</body>
 </html>
