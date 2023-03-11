@@ -119,3 +119,87 @@ do {
       break;
   }
 } while ( conf != 2); */
+
+// Ordenamiento
+
+/* var inputUser = parseInt(prompt("Ingresa la cantida de elementos del array"))
+var array = []
+var aux = 0
+var element
+
+for (let i = 0; i < inputUser; i++) {
+  element = parseInt(prompt("Ingresa un elemento para la posicion #" + (i + 1)))
+  array[i] = element
+}
+
+var menor = array[0]
+
+for (let i = 0; i < array.length; i++) {
+  for (let j = i; j < array.length; j++) {
+    if (array[i] > array[j]) {
+      aux = array[j]
+      array[j] = array[i]
+      array[i] = aux
+    }
+  }
+}
+
+for (let i = 0; i < array.length; i++) {
+  console.log(array[i])
+}
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] < menor) {
+    menor = array[i]
+  }
+}
+
+console.log("El numero menor es " + menor) */
+
+/* 
+EJERCICIO: Playlist
+
+Estas son las opciones:
+- Crear una playlist, teniendo en cuenta que debe grabarse con un nombre
+- Agregar temas a la playlist (todos los que quiera)
+- Buscar temas en una playlist
+- Mostrar los datos de la playlist (nombre y listado de temas)
+
+*/
+
+
+/* const menu = "Ingrese el numero de la opcion deseada.\n1. Crear playlist.\n2. Agregar temas a la playlist.\n3. Buscar temas en una playlist.\n4. Mostrar datos en una playlist.\n5. Salir"
+const playlists = []
+var temas
+
+do {
+  var opc = parseInt(prompt(menu))
+
+  switch (opc) {
+    case 1: // Crear playlist
+      
+      playlists[playlists.length]
+      
+      alert("Tus playlist\n" + playlists)
+      break;
+    case 2:// Agregar temas
+      
+      break;
+    case 3:// Buscar temas
+      
+      break;
+    case 4:// Mostrar temas 
+      
+      break;
+    case 5:
+      var conf = 1
+      conf = parseInt(prompt("Deseas salir de la aplicacion.\n1. Confirmar.\n2. Cancelar"))
+      alert("Gracias por usar nuestros servicios.")
+      break;
+  
+    default:
+      alert("Opcion no valida,  vuelda a intentarlo.")
+      break;
+  }
+
+} while (conf != 1); */
