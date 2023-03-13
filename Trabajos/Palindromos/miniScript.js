@@ -1,7 +1,3 @@
-// Ejercicio palindromos
-// Code written by Sebastian Leal
-
-// Array for testing
 const palindromes = [
   "Acaso hubo buhos aca",// True
   "Oro",// True
@@ -32,47 +28,25 @@ const palindromes = [
   "82228",// True
 ]
 
-// The function converts an input string and return
-// an array without spaces and uppercase letters
-function converter(text) {
-  return text.toLowerCase().replaceAll(" ", "").split("")
-}
+function isPalindrome(text) {
 
-// The function checks if the first and last positions of
-// an input array match it returns true if they all match
-function check(array) {
+  let array = text.toLowerCase().replaceAll(" ", "").split("")
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] != array[array.length - (i + 1)]) {
-      return false
+      return "no es palindromo"
     }
   }
 
-  return true
+  return "es palindromo"
+
 }
 
-// The function receives a string and forwards it to
-// the converter function, returning a phrase as
-// returned by the check function
-function isAPalindrome(text) {
-  let palindrome = "no es un palindromo"
-  
-  if (check(converter(text))) {
-    palindrome = "es un palindromo"
-  }
-
-  return palindrome
-}
- 
-// The function goes through an array and for each element
-// displays in the console the element and a text depending
-// on whether it is a palindrome or not 
 function test() {
   for (let i = 0; i < palindromes.length; i++) {
-    console.log(palindromes[i] + ", " + isAPalindrome(palindromes[i]))
+    console.log(palindromes[i] + ", " + isPalindrome(palindromes[i]))
   }
 }
-
 
 function main() {
   let opc = 0
@@ -82,7 +56,7 @@ function main() {
     switch (opc) {
       case 1:
         let inputUser = prompt("Ingresa una frase:")
-        alert(inputUser + ", " + isAPalindrome(inputUser))
+        alert(inputUser + ", " + isPalindrome(inputUser))
         break;
       case 2:
         alert("Gracias.")
