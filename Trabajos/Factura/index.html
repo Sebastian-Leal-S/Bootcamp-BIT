@@ -18,15 +18,15 @@
         <hr>
 
         <h3>Cliente</h3>
+
         <div class="input-group mb-3">
-          <!-- <span class="input-group-text">Nombres y apellidos</span> -->
-          <input type="text" class="form-control" id="firstName" placeholder="Nombre">
-          <input type="text" class="form-control" id="lastName" placeholder="Apellidos">
+          <input type="text" class="form-control" id="firstName" placeholder="Nombre" required>
+          <input type="text" class="form-control" id="lastName" placeholder="Apellidos" required>
         </div>
 
-        <input type="text" class="form-control mb-3" placeholder="tuCorreo@ejemplo.com" id="email">
-        <input type="tel" class="form-control mb-3" placeholder="Celular" id="numberPhone">
-        <input type="date" class="form-control mb-3" id="date">
+        <input type="text" class="form-control mb-3" placeholder="tuCorreo@ejemplo.com" id="email" required>
+        <input type="tel" class="form-control mb-3" placeholder="Celular" id="numberPhone" required>
+        <input type="date" class="form-control mb-3" id="date" required>
 
         <div class="col-12 d-flex flex-row-reverse">
           <button class="btn btn-primary" type="submit" id="btnSaveClient">Guardar Cliente</button>
@@ -52,7 +52,7 @@
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row mb-3">
       <div class="col">
         <h3>Cliente</h3>
         <hr>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-3">
       <h3>Productos</h3>
       <hr>
       <div class="col">
@@ -93,12 +93,13 @@
       </div>
     </div>
 
-    <div class="row justify-content-between">
-      <div class="col-sm-6">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-4">
         <h3>Total a pagar</h3>
       </div>
-      <div class="col-sm-2">
-        <h4 id="priceTotal"></h4>
+      <div class="col-2 d-flex flex-row align-items-center">
+        <span class="font-weight-bold m-0 p-0">$</span>
+        <h5 class="m-0" id="priceTotal">0</h5>
       </div>
     </div>
   </div>
