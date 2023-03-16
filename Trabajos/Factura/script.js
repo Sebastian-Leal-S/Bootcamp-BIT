@@ -1,4 +1,13 @@
-document.getElementById("btnSaveClient").addEventListener("click", function() {
+const currentDate = new Date()
+
+console.log(currentDate)
+console.log(currentDate.toISOString())
+console.log(currentDate.toISOString().substring(0, 10))
+
+var date = document.getElementById("date")
+date.value = currentDate.toISOString().substring(0,10)
+
+document.getElementById("btnSaveClient").addEventListener("click", () => {
   
   let firstName = document.getElementById("firstName").value
   let lastName = document.getElementById("lastName").value
@@ -17,6 +26,8 @@ document.getElementById("btnSaveClient").addEventListener("click", function() {
   emailCell.innerHTML = email;
   phoneCell.innerHTML = phone;
   dateCell.innerHTML = date;
+
+  document.getElementById("btnSaveClient").disabled = true
 })
 
 var arrayAmount = []
@@ -57,5 +68,9 @@ document.getElementById("btnSaveProduct").addEventListener("click", function() {
   priceCell.innerHTML = price;
 
   priceTotal()
+
+  document.getElementById("nameProduct").value = ""
+  document.getElementById("amount").value = ""
+  document.getElementById("price").value = ""
 
 })
