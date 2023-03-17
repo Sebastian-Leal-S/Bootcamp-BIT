@@ -1,26 +1,23 @@
-var arrayDatos = []
 const taskList = document.getElementById("listTask")
 const btnAdd = document.getElementById("btnAddTask")
+var arrayDatos = []
 
 document.addEventListener("DOMContentLoaded", function() {
   
-  arrayDatos = localStorage.getItem("storage").split(",")
-  
-  if (arrayDatos[0] === "") {
-    arrayDatos.shift();
-  }
+  arrayDatos = localStorage.getItem("storage")?.split(",") ?? []
 
-  for (let i = 0; i < arrayDatos.length; i++) {
+  for (const nameTask of arrayDatos) {
     let taskItem = document.createElement("li")
     taskItem.classList.add("list-group-item")
-    taskItem.innerHTML = "<span>" + arrayDatos[i] + "</span>"
+    taskItem.innerHTML = "<span>" + nameTask + "</span>"
+    /* taskItem.innerHTML = `<span>${nameTask}</span>` */
     taskList.appendChild(taskItem)
   }
 })
 
 btnAdd.addEventListener("click", function() {
   
-  let nameTask = document.getElementById("inputTaskName").value
+  let nameTask = document.getElementById("inputTaskName").value.trim()
   
   if (nameTask) {
 
@@ -32,7 +29,8 @@ btnAdd.addEventListener("click", function() {
     taskList.appendChild(taskItem)
   
     document.getElementById("inputTaskName").value = ""
+    
+    localStorage.setItem("storage", arrayDatos)
   }
 
-  localStorage.setItem("storage", arrayDatos)
 })
