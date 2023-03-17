@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio Local Storage por Sebastian Leal Sanchez</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h1>Uso de local storage</h1>
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <div class="input-group">
+            <input type="text" id="firstName" class="form-control" placeholder="Ingresa tus nombres">
+            <input type="text" id="lastName" class="form-control" placeholder="Ingresa tus apellidos">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Direccion completa</label>
+          <input type="text" id="address" class="form-control" placeholder="Ingresa tu direccion">
+        </div>
+        <div class="form-group">
+          <label>Numero de telefono</label>
+          <input type="text" id="numberPhone" class="form-control" placeholder="Ingresa tu numero de telefono">
+        </div>
+        <div class="form-group">
+          <label>Serie favorita</label>
+          <select id="favTvShow" class="custom-select">
+            <option selected>Escoge tu serie favorita</option>
+            <option value="The Big Bang Theory">The Big Bang Theory</option>
+            <option value="The Office">The Office</option>
+            <option value="Blue">Blue</option>
+          </select>
+        </div>
+
+        <div class="btn-group d-flex">          
+          <button class="btn btn-info btn-block btn-lg m-0" id="btnSave">Guardar datos</button>
+          <button class="btn btn-success btn-block btn-lg m-0" id="btnRecovery">Recuperar datos</button>
+        </div>
+
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+        <h4 id="h4fullName"></h4>
+        <h4 id="h4address"></h4>
+        <h4 id="h4numberPhone"></h4>
+        <h4 id="h4favTvShow"></h4>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- script -->
+  <script src="./script.js"></script>
+</body>
+</html>
