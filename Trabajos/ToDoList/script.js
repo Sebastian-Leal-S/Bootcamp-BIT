@@ -24,12 +24,16 @@ function createTaskHeader(button, index) {
   return header
 }
 
-function createBtnEdit(description) {
+function createTaskBody(description) {
+  const body = document.createElement("div")
+  body.classList.add("accordion-body", "show")
+  body.textContent = description
+
   const editBtn = document.createElement("button")
   editBtn.setAttribute("type", "button")
   editBtn.classList.add("btn", "btn-primary", "me-2")
-  editBtn.textContent = "Editar"
-
+  editBtn.textContent = "Edit"
+  
   editBtn.addEventListener("click", () => {
     const newDescription = prompt("Enter the new description:", description)
     if (newDescription !== null && newDescription.trim() !== "") {
@@ -39,14 +43,6 @@ function createBtnEdit(description) {
       localStorage.setItem("storage", JSON.stringify(taskListData))
     }
   })
-}
-
-function createTaskBody(description) {
-  const body = document.createElement("div")
-  body.classList.add("accordion-body", "show")
-  body.textContent = description
-
-  const editBtn = createBtnEdit(description)
 
   const deleteBtn = document.createElement("button")
   deleteBtn.setAttribute("type", "button")
