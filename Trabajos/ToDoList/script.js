@@ -7,8 +7,8 @@ function createTaskButton(title, index) {
   button.classList.add("accordion-button")
   button.setAttribute("type", "button")
   button.setAttribute("data-bs-toggle", "collapse")
-  button.setAttribute("aria-expanded", "true")
   button.setAttribute("data-bs-target", `#collapse${index}`)
+  button.setAttribute("aria-expanded", "fasle")
   button.setAttribute("aria-controls", `collapse${index}`)
   button.textContent = title
 
@@ -24,10 +24,48 @@ function createTaskHeader(button, index) {
   return header
 }
 
+function createBtnEdit(description) {
+  const editBtn = document.createElement("button")
+  editBtn.setAttribute("type", "button")
+  editBtn.classList.add("btn", "btn-primary", "me-2")
+  editBtn.textContent = "Editar"
+
+  editBtn.addEventListener("click", () => {
+    const newDescription = prompt("Enter the new description:", description)
+    if (newDescription !== null && newDescription.trim() !== "") {
+      description = newDescription.trim()
+      body.textContent = description
+      taskListData[index].description = description
+      localStorage.setItem("storage", JSON.stringify(taskListData))
+    }
+  })
+}
+
 function createTaskBody(description) {
   const body = document.createElement("div")
   body.classList.add("accordion-body", "show")
   body.textContent = description
+
+  const editBtn = createBtnEdit(description)
+
+  const deleteBtn = document.createElement("button")
+  deleteBtn.setAttribute("type", "button")
+  deleteBtn.classList.add("btn", "btn-danger")
+  deleteBtn.textContent = "Delete"
+  deleteBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to delete this task?")) {
+      taskListData.splice(index, 1)
+      taskList.removeChild(item)
+      localStorage.setItem("storage", JSON.stringify(taskListData))
+    }
+  })
+
+  const buttonsWrapper = document.createElement("div")
+  buttonsWrapper.classList.add("d-flex", "justify-content-end", "mt-2")
+  buttonsWrapper.appendChild(editBtn)
+  buttonsWrapper.appendChild(deleteBtn)
+
+  body.appendChild(buttonsWrapper)
 
   return body
 }
