@@ -2,89 +2,89 @@ const taskList = document.getElementById("listTask");
 const btnAdd = document.getElementById("btnAddTask");
 var taskListData = [];
 
-document.addEventListener("DOMContentLoaded", function () {
-  taskListData = JSON.parse(localStorage.getItem("storage")) ?? [];
+function createTaskButton(title, index) {
+  const button = document.createElement("button")
+  button.classList.add("accordion-button")
+  button.setAttribute("type", "button")
+  button.setAttribute("data-bs-toggle", "collapse")
+  button.setAttribute("aria-expanded", "true")
+  button.setAttribute("data-bs-target", `#collapse${index}`)
+  button.setAttribute("aria-controls", `collapse${index}`)
+  button.textContent = title
+
+  return button
+}
+
+function createTaskHeader(button, index) {
+  const header = document.createElement("h2")
+  header.classList.add("accordion-header")
+  header.setAttribute("id", `heading${index}`)
+  header.appendChild(button)
+
+  return header
+}
+
+function createTaskBody(description) {
+  const body = document.createElement("div")
+  body.classList.add("accordion-body", "show")
+  body.textContent = description
+
+  return body
+}
+
+function createTaskCollapse(body, index) {
+  const collapse = document.createElement("div")
+  collapse.classList.add("accordion-collapse", "collapse")
+  collapse.setAttribute("id", `collapse${index}`)
+  collapse.setAttribute("aria-labelledby", `heading${index}`)
+  collapse.setAttribute("data-bs-parent", "#listTask")
+  collapse.appendChild(body)
+
+  return collapse
+}
+
+function createTaskItem(header, collapse) {
+  const item = document.createElement("div")
+  item.classList.add("accordion-item")
+  item.appendChild(header)
+  item.appendChild(collapse)
+
+  return item
+}
+
+function createTask(title, description, index) {
+  const button = createTaskButton(title, index)
+  const header = createTaskHeader(button, index)
+  const body = createTaskBody(description)
+  const collapse = createTaskCollapse(body, index)
+  const item = createTaskItem(header, collapse)
+
+  return item
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  taskListData = JSON.parse(localStorage.getItem("storage")) ?? []
 
   taskListData.forEach(({ title, description }, index)  => {
-    
-    let btnTask = document.createElement("button")
-    btnTask.classList.add("accordion-button")
-    btnTask.setAttribute("type", "button")
-    btnTask.setAttribute("data-bs-toggle", "collapse")
-    btnTask.setAttribute("aria-expanded", "true")
-    btnTask.setAttribute("data-bs-target", "#collapse" + (index))
-    btnTask.setAttribute("aria-controls", "collapse" + (index))
-    btnTask.innerText = title
-
-    let h2title = document.createElement("h2")
-    h2title.classList.add("accordion-header")
-    h2title.setAttribute("id", "heading" + (index))
-    h2title.appendChild(btnTask)
-
-    let divAccordionBody = document.createElement("div")
-    divAccordionBody.classList.add("accordion-body", "show")
-    divAccordionBody.innerText = description
-
-    let divAccordionCollapse = document.createElement("div")
-    divAccordionCollapse.classList.add("accordion-collapse", "collapse")
-    divAccordionCollapse.setAttribute("id", "collapse" + (index))
-    divAccordionCollapse.setAttribute("aria-labelledby", "heading" + (index))
-    divAccordionCollapse.setAttribute("data-bs-parent", "#listTask")
-    divAccordionCollapse.appendChild(divAccordionBody)
-
-    let divAccordionItem = document.createElement("div")
-    divAccordionItem.classList.add("accordion-item")
-    divAccordionItem.appendChild(h2title)
-    divAccordionItem.appendChild(divAccordionCollapse)
-
-    taskList.appendChild(divAccordionItem)
+    const item = createTask(title, description, index)
+    taskList.appendChild(item)
   });
+
 });
 
-/* .innerHTML = `` */
-
-btnAdd.addEventListener("click", function () {
-  let title = document.getElementById("inputTaskTitle").value.trim();
-  let description = document.getElementById("inputTaskDesc").value.trim();
+btnAdd.addEventListener("click", () => {
+  const [titleEl, descEl] = [document.getElementById("inputTaskTitle"), document.getElementById("inputTaskDesc")]
+  const title = titleEl.value.trim()
+  const description = descEl.value.trim()
 
   if (title && description) {
-    taskListData.push({ title, description });
-
-    let btnTask = document.createElement("button")
-    btnTask.classList.add("accordion-button")
-    btnTask.setAttribute("type", "button")
-    btnTask.setAttribute("data-bs-toggle", "collapse")
-    btnTask.setAttribute("aria-expanded", "true")
-    btnTask.setAttribute("data-bs-target", "#collapse" + (taskListData.length - 1))
-    btnTask.setAttribute("aria-controls", "collapse" + (taskListData.length - 1))
-    btnTask.innerText = title
-
-    let h2title = document.createElement("h2")
-    h2title.classList.add("accordion-header")
-    h2title.setAttribute("id", "heading" + (taskListData.length - 1))
-    h2title.appendChild(btnTask)
-
-    let divAccordionBody = document.createElement("div")
-    divAccordionBody.classList.add("accordion-body", "show")
-    divAccordionBody.innerText = description
-
-    let divAccordionCollapse = document.createElement("div")
-    divAccordionCollapse.classList.add("accordion-collapse", "collapse")
-    divAccordionCollapse.setAttribute("id", "collapse" + (taskListData.length - 1))
-    divAccordionCollapse.setAttribute("aria-labelledby", "heading" + (taskListData.length - 1))
-    divAccordionCollapse.setAttribute("data-bs-parent", "#listTask")
-    divAccordionCollapse.appendChild(divAccordionBody)
-
-    let divAccordionItem = document.createElement("div")
-    divAccordionItem.classList.add("accordion-item")
-    divAccordionItem.appendChild(h2title)
-    divAccordionItem.appendChild(divAccordionCollapse)
-
-    taskList.appendChild(divAccordionItem)
-
-    document.getElementById("inputTaskTitle").value = "";
-    document.getElementById("inputTaskDesc").value = "";
-
-    localStorage.setItem("storage", JSON.stringify(taskListData));
+    taskListData.push({ title, description })
+    const index = taskListData.length - 1
+    const item = createTask(title, description, index)
+    taskList.appendChild(item)
+    titleEl.value = ""
+    descEl.value = ""
+    localStorage.setItem("storage", JSON.stringify(taskListData))
   }
+  
 });
