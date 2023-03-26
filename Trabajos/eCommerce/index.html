@@ -21,30 +21,36 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="./src/img/logo-72.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" />
+          <img
+            src="./src/img/logo-72.svg"
+            alt="Logo"
+            width="30"
+            height="24"
+            class="d-inline-block align-text-top"
+          />
           eComerce
         </a>
         <button
           class="navbar-toggler me-2 order-1"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
+          data-bs-target="#navbarEcomerce"
+          aria-controls="navbarEcomerce"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse order-2" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse order-2" id="navbarEcomerce">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="btnsNavbar">
             <li class="nav-item me-4">
-              <button id="btnProductos" type="button" class="btn btn-dark">Productos</button>
+              <button data-section="productos" type="button" class="btn btn-dark">Productos</button>
             </li>
             <li class="nav-item me-4">
-              <button id="btnCarrito" type="button" class="btn btn-dark">Carrito</button>
+              <button data-section="carrito" type="button" class="btn btn-dark">Carrito</button>
             </li>
             <li class="nav-item me-4">
-              <button id="btnNosotros" type="button" class="btn btn-dark">Nosotros</button>
+              <button data-section="nosotros" type="button" class="btn btn-dark">Nosotros</button>
             </li>
           </ul>
         </div>
@@ -96,23 +102,21 @@
       </div>
     </section>
 
-    <h2 class="text-center">Seccion de compras</h2>
-    <h2 class="text-center">Proximamente</h2>
-
     <!-- Sección del compras -->
-    <section id="compras" class="py-5 bg-light">
+    <section id="compras" class="my-5">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2>Compras realizadas</h2>
+            <h2 class="text-center">Compras realizadas</h2>
             <table class="table">
               <!-- Cabezera -->
               <thead>
                 <tr>
-                  <!-- <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio unitario</th>
-                <th scope="col">Subtotal</th> -->
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio unitario</th>
+                  <th scope="col">Subtotal</th>
                 </tr>
               </thead>
               <!-- Cuerpo -->
@@ -124,22 +128,23 @@
     </section>
 
     <!-- Sección de nosotros -->
-    <section id="nosotros" class="py-5">
+    <section id="nosotros" class="py-5 bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
             <h2>Nosotros</h2>
             <p>
-              En nuestra tienda en línea, nos dedicamos a la venta de productos de alta calidad a precios competitivos.
-              Nos enorgullece ofrecer una amplia selección de productos que se ajustan a tus necesidades y presupuesto,
-              y nuestro equipo está siempre dispuesto a brindarte asesoría y orientación para que puedas encontrar el
-              producto perfecto.
+              En nuestra tienda en línea, nos dedicamos a la venta de productos de alta calidad a
+              precios competitivos. Nos enorgullece ofrecer una amplia selección de productos que se
+              ajustan a tus necesidades y presupuesto, y nuestro equipo está siempre dispuesto a
+              brindarte asesoría y orientación para que puedas encontrar el producto perfecto.
             </p>
             <p>
-              Nos tomamos muy en serio la satisfacción de nuestros clientes y nos esforzamos por brindar un excelente
-              servicio al cliente. Nos enorgullece ofrecer un servicio amigable, eficiente y respetuoso, y estamos
-              comprometidos en hacer todo lo posible para que tu experiencia de compra sea lo más fácil y agradable
-              posible. Gracias por elegir nuestra tienda en línea para tus necesidades de compras.
+              Nos tomamos muy en serio la satisfacción de nuestros clientes y nos esforzamos por
+              brindar un excelente servicio al cliente. Nos enorgullece ofrecer un servicio
+              amigable, eficiente y respetuoso, y estamos comprometidos en hacer todo lo posible
+              para que tu experiencia de compra sea lo más fácil y agradable posible. Gracias por
+              elegir nuestra tienda en línea para tus necesidades de compras.
             </p>
           </div>
           <div class="col-md-6">
