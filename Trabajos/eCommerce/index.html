@@ -4,62 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/x-icon" />
     <title>Manipulacion con jQuery Sebastian Leal Sanchez</title>
-    <!-- jQuey -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Bootstrap -->
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./src/img/favicon.svg" type="image/x-icon" />
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Barra de navegacion -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img
-            src="./src/img/logo-72.svg"
-            alt="Logo"
-            width="30"
-            height="24"
-            class="d-inline-block align-text-top"
-          />
-          eComerce
-        </a>
-        <button
-          class="navbar-toggler me-2 order-1"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarEcomerce"
-          aria-controls="navbarEcomerce"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse order-2" id="navbarEcomerce">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="btnsNavbar">
-            <li class="nav-item me-4">
-              <button data-section="productos" type="button" class="btn btn-dark">Productos</button>
-            </li>
-            <li class="nav-item me-4">
-              <button data-section="carrito" type="button" class="btn btn-dark">Carrito</button>
-            </li>
-            <li class="nav-item me-4">
-              <button data-section="nosotros" type="button" class="btn btn-dark">Nosotros</button>
-            </li>
-          </ul>
+    <header>
+      <nav class="nav navbar fixed-top navbar-expand-lg navbar-dark bg-dark bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="logo navbar-brand" href="./index.html">
+            <img
+              src="./src/img/logo-72.svg"
+              alt="Logo"
+              width="30"
+              height="24"
+              class="d-inline-block align-text-top"
+            />
+            eComerce
+          </a>
+          <button
+            class="navbar-toggler me-2 order-1"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarEcomerce"
+            aria-controls="navbarEcomerce"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse order-2" id="navbarEcomerce">
+            <ul class="menu navbar-nav ms-auto mb-2 mb-lg-0" id="btnsNavbar">
+              <li class="nav-item me-4">
+                <button data-section="productos" type="button" class="btn btn-dark">
+                  Productos
+                </button>
+              </li>
+              <li class="nav-item me-4">
+                <button data-section="carrito" type="button" class="btn btn-dark">Carrito</button>
+              </li>
+              <li class="nav-item me-4">
+                <button data-section="nosotros" type="button" class="btn btn-dark">Nosotros</button>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     <!-- Sección de productos -->
     <section id="productos" class="py-5">
-      <div class="container">
+      <div class="container mt-3">
         <div class="row">
           <div class="col-md-12">
             <div class="input-group mb-3">
@@ -78,23 +89,24 @@
     </section>
 
     <!-- Sección del carrito -->
-    <section id="carrito" class="py-5 bg-light">
-      <div class="container">
+    <section id="carrito" class="bg-light">
+      <div class="container pt-5 my-3">
         <div class="row">
           <div class="col-md-12">
             <h2>Carrito de compras</h2>
-            <table class="table">
+            <table class="table" id="dataTableCarrito">
               <!-- Cabezera -->
               <thead>
                 <tr>
-                  <th scope="col">Producto</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Precio unitario</th>
-                  <th scope="col">Subtotal</th>
+                  <th scope="col centered">Opciones</th>
+                  <th scope="col centered">Producto</th>
+                  <th scope="col centered">Cantidad</th>
+                  <th scope="col centered">Precio unitario</th>
+                  <th scope="col centered">Subtotal</th>
                 </tr>
               </thead>
               <!-- Cuerpo -->
-              <tbody id="tablaCarrito"></tbody>
+              <tbody id="tableBodyCarrito"></tbody>
             </table>
             <button type="button" id="btnPagar" class="btn btn-primary">Pagar</button>
           </div>
@@ -103,8 +115,8 @@
     </section>
 
     <!-- Sección del compras -->
-    <section id="compras" class="my-5">
-      <div class="container">
+    <section id="compras">
+      <div class="container pt-5 my-3">
         <div class="row">
           <div class="col-md-12">
             <h2 class="text-center">Compras realizadas</h2>
@@ -128,8 +140,8 @@
     </section>
 
     <!-- Sección de nosotros -->
-    <section id="nosotros" class="py-5 bg-light">
-      <div class="container">
+    <section id="nosotros" class="bg-light">
+      <div class="container pt-5 my-3">
         <div class="row">
           <div class="col-md-6">
             <h2>Nosotros</h2>
@@ -153,14 +165,19 @@
         </div>
       </div>
     </section>
-    <!-- Script -->
-    <script src="./src/js/productos.js"></script>
-    <script src="./src/js/script.js"></script>
-    <!-- js Bootstrap -->
+    <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./src/js/sweetAlert.js"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Script -->
+    <script src="./src/json/productos.js"></script>
+    <script src="./src/js/script.js"></script>
   </body>
 </html>

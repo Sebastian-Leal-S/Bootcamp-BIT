@@ -1,5 +1,6 @@
 $(function () {
   const btnPagar = $('#btnPagar');
+
   renderizarListaProductos(productos);
   renderizarTablaCarrito();
   renderizarTablaCompras();
@@ -31,7 +32,6 @@ $(function () {
     e.preventDefault();
 
     let carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
-    /* carrito.push({fecha: new Date().toISOString().substring(0, 10)}); */
     const idCompra = 'compra_' + new Date().getTime();
     localStorage.setItem(idCompra, JSON.stringify(carrito));
 
@@ -47,18 +47,16 @@ $(function () {
 
     const carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
 
-    const form = event.currentTarget;
-    const cantidad = parseInt(form.elements['cantidad'].value);
     const repetido = carrito.find(prodCarrito => prodCarrito.id === producto.id);
 
     if (repetido) {
-      repetido.cantidad += cantidad;
+      repetido.cantidad += 1;
     } else {
       carrito.push({
         id: producto.id,
         name: producto.name,
         precio: producto.precio,
-        cantidad: cantidad,
+        cantidad: 1,
       });
     }
 
@@ -80,29 +78,15 @@ $(function () {
               $('<h5>', {class: 'm-0'}).text(`$${precio}`)
             ),
             $('<p>', {class: 'card-text'}).text(`${descripcion}`),
-            $('<form>', {class: 'comprar'})
-              .append(
-                $('<div>', {class: 'input-group'}).append(
-                  $('<input>', {
-                    class: 'form-control',
-                    type: 'number',
-                    name: 'cantidad',
-                    value: 1,
-                    min: 1,
-                    required: true,
-                  }),
-                  $('<input>', {
-                    class: 'btn btn-primary',
-                    type: 'submit',
-                    'data-id': id,
-                    value: 'Agregar al carrito',
-                  })
-                )
-              )
-              .on('submit', event => {
-                agregarProductosCarrito(event, producto);
-                renderizarTablaCarrito(carrito);
-              })
+            $('<div>', {class: 'd-grid gap-2'}).append(
+              $('<button>', {class: 'btn btn-primary', type: 'button'})
+                .text('Agregar al carrito')
+                .on('click', event => {
+                  alertAgregarProducto();
+                  agregarProductosCarrito(event, producto);
+                  initDataTable();
+                })
+            )
           )
         )
       );
@@ -119,9 +103,19 @@ $(function () {
     );
   }
 
-  /* Renderiza los el carrito */
+  /* Editar cantidad */
+  function editarCantidad(event, producto) {
+    event.preventDefault();
+  }
+
+  /* Eliminar del carrito */
+  function eliminarProducto(event, producto) {
+    event.preventDefault();
+  }
+
+  /* Renderiza carrito */
   function renderizarTablaCarrito() {
-    const tablaCarrito = $('#tablaCarrito').empty();
+    const tablaCarrito = $('#tableBodyCarrito').empty();
     const carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
     carrito.length == 0 ? btnPagar.prop('disabled', true) : btnPagar.prop('disabled', false);
 
@@ -130,6 +124,18 @@ $(function () {
 
       tablaCarrito.append(
         $('<tr>').append(
+          $('<td>', {class: ''}).append(
+            $('<button>', {class: 'btn btn-sm btn-primary'})
+              .append($('<i>', {class: 'fa-solid fa-pencil'}))
+              .on('click', event => {
+                editarCantidad(event, producto);
+              }),
+            $('<button>', {class: 'btn btn-sm btn-danger'})
+              .append($('<i>', {class: 'fa-solid fa-trash-can'}))
+              .on('click', event => {
+                eliminarProducto(event, producto);
+              })
+          ),
           $('<td>').text(name),
           $('<td>').text(cantidad),
           $('<td>').text(precio),
@@ -140,7 +146,7 @@ $(function () {
 
     tablaCarrito.append(
       $('<tr>').append(
-        $('<th>', {scope: 'row', colspan: '3'}).text('Total'),
+        $('<th>', {scope: 'row', colspan: '4'}).text('Total'),
         $('<td>').text(`$${calcularTotalCompra(carrito)}`)
       )
     );
